@@ -27,8 +27,8 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
-        <div class="booking-form">
+    <section class="main-content container">
+        <div id="form-area" class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
@@ -95,12 +95,18 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="bookIn" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+        </div>
+ <!-- Confirmation -->
+        <div id="confirmation-area" class="confirmation">
+            
+            <h2> Congratulations </h2>
+           <p> you have booked <span id="firstClassTicket">0</span> FirstClass and <span id="economyClassTicket">0</span> Economy Class Air Ticket.</p>
         </div>
     </section>
 
@@ -142,6 +148,11 @@
         function calculateSubTotal (){
             const firstClassInput = getInputNumber("currentFirstClass");
             const ecoClassInput = getInputNumber("currentEconomyClass");
+            const showFirstClass= document.getElementById('firstClassTicket');
+            showFirstClass.innerText=firstClassInput;
+            const showEconomyClass= document.getElementById('economyClassTicket');
+            showEconomyClass.innerText=ecoClassInput;
+
             const subtotal= firstClassInput*150 + ecoClassInput*100;
             document.getElementById('subtotal').innerText='$ '+ subtotal; 
             const vatCalculation = subtotal/10;
@@ -171,6 +182,16 @@
             else{
             return intNumber;}
         }
+        //book now
+        const bookInBtn = document.getElementById("bookIn"); 
+        bookInBtn.addEventListener("click",function(){
+            const formArea = document.getElementById("form-area");
+            formArea.style.display = "none";
+        const confirmationArea = document.getElementById("confirmation-area");
+        confirmationArea.style.display="block";
+        })
+
+
 </script>
     </body>
 </html>
