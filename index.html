@@ -107,6 +107,7 @@
             
             <h2> Congratulations </h2>
            <p> you have booked <span id="firstClassTicket">0</span> FirstClass and <span id="economyClassTicket">0</span> Economy Class Air Ticket.</p>
+           <p>your Total cost is: $ <span id="totalPayable">0</span>.</p>
         </div>
     </section>
 
@@ -152,13 +153,14 @@
             showFirstClass.innerText=firstClassInput;
             const showEconomyClass= document.getElementById('economyClassTicket');
             showEconomyClass.innerText=ecoClassInput;
-
             const subtotal= firstClassInput*150 + ecoClassInput*100;
             document.getElementById('subtotal').innerText='$ '+ subtotal; 
             const vatCalculation = subtotal/10;
             document.getElementById('vat').innerText= '$' +vatCalculation;
             const GrandTotal = subtotal + vatCalculation; 
             document.getElementById('grandTotal').innerText= '$' +GrandTotal;
+            const totalCost = document.getElementById("totalPayable");
+            totalCost.innerText=GrandTotal;
         }
         
         function updateNumber(curNumber, id){
